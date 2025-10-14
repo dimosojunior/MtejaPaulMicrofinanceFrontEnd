@@ -1,0 +1,39 @@
+{
+  "expo": {
+    "name": "Tmcl-Microfinance",
+    "slug": "Tmcl-Microfinance",
+    "version": "1.0.1",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "notification": {
+      "icon": "./assets/icon.png",
+      "color": "#ffffff"
+    },
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "cover",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true,
+      "bundleIdentifier": "ttpc.TmclMicrofinance"
+    },
+    "android": {
+      "versionCode": 1,
+      "package": "ttpc.TmclMicrofinance",
+      "adaptiveIcon": {
+        "foregroundImage": "./assets/icon.png",
+        "backgroundColor": "#ffffff"
+      }
+    },
+    "web": {
+      "favicon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "19fda69c-d614-4db8-ab93-87d3e083fde8"
+      }
+    }
+  }
+}
