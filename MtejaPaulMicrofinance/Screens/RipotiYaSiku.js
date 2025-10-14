@@ -38,6 +38,10 @@ import DatePicker from "react-native-modern-datepicker";
 import * as Print from 'expo-print';
 import { shareAsync } from 'expo-sharing';
 
+import { AppName } from '../Constant/links';
+
+// {AppName}
+
 const { width, height } = Dimensions.get('screen');
 
 const html = `
@@ -1754,7 +1758,7 @@ style={{
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

@@ -23,6 +23,9 @@ import { COLORS, SIZES } from '../Screens/src/Constant';
 import LotterViewScreen from '../Screens/LotterViewScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { AppName } from '../Constant/links';
+// {AppName}
+
 
 const ChangePasswordScreen = ({navigation}) => {
 
@@ -209,7 +212,7 @@ let [fontsLoaded] = useFonts({
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

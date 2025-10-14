@@ -36,6 +36,10 @@ import { useFocusEffect } from '@react-navigation/native';
 import { getFormatedDate } from "react-native-modern-datepicker";
 import DatePicker from "react-native-modern-datepicker";
 
+import { AppName } from '../Constant/links';
+
+// {AppName}
+
 const { width, height } = Dimensions.get('screen');
 
 const HawajarejeshaJana = ({ navigation }) => {
@@ -900,7 +904,7 @@ style={{
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

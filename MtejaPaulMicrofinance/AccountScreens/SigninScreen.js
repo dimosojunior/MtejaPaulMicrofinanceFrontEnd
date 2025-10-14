@@ -27,6 +27,8 @@ import { useFonts } from 'expo-font';
 import AwesomeAlert from 'react-native-awesome-alerts';
 import { LinearGradient } from 'expo-linear-gradient';
 
+import { AppName } from '../Constant/links';
+
 const { width, height } = Dimensions.get('window');
 
 /**
@@ -245,7 +247,7 @@ const SigninScreen = ({ navigation }) => {
 
           <View style={styles.logoContainer}>
             <Image source={require('../assets/icon.png')} style={styles.logo} />
-            <Text style={styles.companyName}>TMCL</Text>
+            <Text style={styles.companyName}>{AppName}</Text>
             <Text style={styles.description}>Karibu Tena! Tafadhali jaza taarifa kwa usahihi kuendelea.</Text>
           </View>
 
@@ -333,7 +335,7 @@ const SigninScreen = ({ navigation }) => {
           customView={
             <View style={globalStyles.alertContent}>
               <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-              <Text style={globalStyles.alertTitle}>TMCL</Text>
+              <Text style={globalStyles.alertTitle}>{AppName}</Text>
               <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
             </View>
           }

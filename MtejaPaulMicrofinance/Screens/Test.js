@@ -90,8 +90,7 @@ export default function Test({ navigation }) {
         </View>
       </ScrollView>
 
-      {/* Bottom Navigation */}
-     
+          
     </View>
   );
 }

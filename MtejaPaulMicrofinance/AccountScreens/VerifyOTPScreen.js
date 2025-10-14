@@ -22,6 +22,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 //import OTPInputView from '@twotalltotems/react-native-otp-input';
 //import OTPInputView from 'react-native-otp-input';
 
+import { AppName } from '../Constant/links';
 
 
 const { width, height } = Dimensions.get('window');

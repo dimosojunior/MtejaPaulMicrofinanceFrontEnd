@@ -18,6 +18,9 @@ import { useFonts } from 'expo-font'
 
 import LottieView from 'lottie-react-native';
 import COLORS  from '../Constant/colors';
+
+import { AppName } from '../Constant/links';
+
 export default function LotterViewScreen() {
 
     // To change color

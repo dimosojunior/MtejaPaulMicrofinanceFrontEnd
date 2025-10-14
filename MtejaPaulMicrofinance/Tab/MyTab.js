@@ -46,10 +46,10 @@ function MyTab( {navigation}){
       	headerShown:false,
         tabBarShowLabel:false,
         tabBarStyle:{
-          backgroundColor:"#233329",
+          backgroundColor:"#0f172a",
           //backgroundColor:"green",
           paddingVertical:5,
-          borderTopColor:'green',
+          borderTopColor:'#fff',
            borderWidth:1,
           elevation: 5,
 
@@ -93,7 +93,7 @@ function MyTab( {navigation}){
 
         title:"Home Tab",
         tabBarIcon: ({focused}) => (
-            <MaterialIcons  
+            <FontAwesome  
             name="home"
             size={focused ? 35 :35}
             color={focused ? 'wheat' : 'white'}

@@ -24,6 +24,10 @@ import Checkbox from 'expo-checkbox'; // Make sure to install this package
 import {Picker} from '@react-native-picker/picker';
 import LotterViewScreen from '../Screens/LotterViewScreen';
 
+import { AppName } from '../Constant/links';
+
+// {AppName}
+
 const {width,height} = Dimensions.get('window');
 const OngezaKituo = ({ navigation }) => {
 
@@ -240,7 +244,7 @@ const handleErrorMessage = (error) => {
           </View>
           <View style={styles.container}>
               <View style={styles.loginLblCon}>
-              <Text style={styles.loginLbl}>TMCL</Text>
+              <Text style={styles.loginLbl}>{AppName}</Text>
             </View>
 
 
@@ -404,7 +408,7 @@ const handleErrorMessage = (error) => {
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

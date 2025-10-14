@@ -20,6 +20,10 @@ import * as FileSystem from 'expo-file-system';
 import * as DocumentPicker from 'expo-document-picker';
 import MinorHeader from '../Header/MinorHeader';
 
+import { AppName } from '../Constant/links';
+
+// {AppName}
+
 const { width, height } = Dimensions.get('window');
 
 const AddMteja = ({ navigation }) => {
@@ -466,7 +470,7 @@ const handleRegistration = async () => {
           </View>
           <View style={styles.container}>
             <View style={styles.loginLblCon}>
-              <Text style={styles.loginLbl}>TMCL</Text>
+              <Text style={styles.loginLbl}>{AppName}</Text>
             </View>
 
 
@@ -1253,7 +1257,7 @@ const handleRegistration = async () => {
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

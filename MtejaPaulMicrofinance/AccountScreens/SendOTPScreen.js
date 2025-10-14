@@ -20,6 +20,8 @@ import LotterViewScreen from '../Screens/LotterViewScreen';
 import { LinearGradient } from 'expo-linear-gradient';
 //import SvgIcon from '../assets/SvgIcon';
 //import OTPInputView from '@twotalltotems/react-native-otp-input';
+import { AppName } from '../Constant/links';
+// {AppName}
 
 
 
@@ -392,7 +394,7 @@ const handleErrorMessage = (error) => {
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/i2.jpg')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }

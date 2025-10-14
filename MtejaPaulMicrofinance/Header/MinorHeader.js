@@ -12,6 +12,8 @@ import React, {useState, useEffect, useContext} from 'react';
 import {globalStyles} from '../Styles/GlobalStyles';
 import {useFonts} from 'expo-font';
 
+import { AppName } from '../Constant/links';
+
 export default function MinorHeader(  {title} ) {
 
     let [fontsLoaded] = useFonts({
