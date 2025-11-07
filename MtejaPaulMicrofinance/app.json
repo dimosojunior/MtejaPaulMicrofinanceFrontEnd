@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "Our-Microfinance",
-    "slug": "Our-Microfinance",
+    "name": "Mgore-Microfinance",
+    "slug": "Mgore-Microfinance",
     "version": "1.0.1",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -17,11 +17,11 @@
     },
     "ios": {
       "supportsTablet": true,
-      "bundleIdentifier": "ttpc.OurMicrofinance"
+      "bundleIdentifier": "ttpc.MgoreMicrofinance"
     },
     "android": {
       "versionCode": 1,
-      "package": "ttpc.OurMicrofinance",
+      "package": "ttpc.MgoreMicrofinance",
       "adaptiveIcon": {
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#ffffff"
@@ -29,9 +29,11 @@
     },
     "web": {
       "favicon": "./assets/icon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "3be07719-1e38-4f48-adeb-8475242ab853"
+      }
     }
-    
-
-
   }
 }

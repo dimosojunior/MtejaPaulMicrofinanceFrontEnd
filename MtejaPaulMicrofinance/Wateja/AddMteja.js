@@ -95,6 +95,9 @@ const [SimuYaMzaminiWa2, setSimuYaMzaminiWa2] = useState('');
 const [JinaLaMzaminiWa1, setJinaLaMzaminiWa1] = useState('');
 const [JinaLaMzaminiWa2, setJinaLaMzaminiWa2] = useState('');
 
+const [Interval, setInterval] = useState('1');
+const [Kiasicha_Riba_Kwa_Muda_Wa_Mkopo, setKiasicha_Riba_Kwa_Muda_Wa_Mkopo] = useState('20');
+
 
   const [userData, setUserData] = useState({});
   const [userToken, setUserToken] = useState('');
@@ -272,35 +275,19 @@ const handleRegistration = async () => {
 
              if (SimuYaMzaminiWa1) {
             formData.append('SimuYaMzaminiWa1', SimuYaMzaminiWa1);
-        } else {
-            showAlertFunction('Tafadhali ingiza namba ya simu ya mzamini wa kwanza ');
-            setIsLoading(false);
-            return;
         }
 
            if (SimuYaMzaminiWa2) {
             formData.append('SimuYaMzaminiWa2', SimuYaMzaminiWa2);
-        } else {
-            showAlertFunction('Tafadhali ingiza namba ya simu ya mzamini wa pili ');
-            setIsLoading(false);
-            return;
-        }
+        } 
 
               if (JinaLaMzaminiWa1) {
             formData.append('JinaLaMzaminiWa1', JinaLaMzaminiWa1);
-        } else {
-            showAlertFunction('Tafadhali ingiza jina la mzamini wa kwanza ');
-            setIsLoading(false);
-            return;
-        }
+        } 
 
            if (JinaLaMzaminiWa2) {
             formData.append('JinaLaMzaminiWa2', JinaLaMzaminiWa2);
-        } else {
-            showAlertFunction('Tafadhali ingiza jina la mzamini wa pili ');
-            setIsLoading(false);
-            return;
-        }
+        } 
 
 
 
@@ -316,36 +303,36 @@ const handleRegistration = async () => {
 
 
           // Validate phone number
-  if (!SimuYaMteja.startsWith("0")) {
+  if (SimuYaMteja && !SimuYaMteja.startsWith("0")) {
     showAlertFunction("Namba ya simu lazima ianze na 0");
     return;
   }
 
-  if (SimuYaMteja.length !== 10) {
+  if (SimuYaMteja && SimuYaMteja.length !== 10) {
     showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
     return;
   }
 
 
            // Validate phone number
-  if (!SimuYaMzaminiWa1.startsWith("0")) {
+  if (SimuYaMzaminiWa1 && !SimuYaMzaminiWa1.startsWith("0")) {
     showAlertFunction("Namba ya simu lazima ianze na 0");
     return;
   }
 
-  if (SimuYaMzaminiWa1.length !== 10) {
+  if (SimuYaMzaminiWa1 && SimuYaMzaminiWa1.length !== 10) {
     showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
     return;
   }
 
 
            // Validate phone number
-  if (!SimuYaMzaminiWa2.startsWith("0")) {
+  if (SimuYaMzaminiWa2 && !SimuYaMzaminiWa2.startsWith("0")) {
     showAlertFunction("Namba ya simu lazima ianze na 0");
     return;
   }
 
-  if (SimuYaMzaminiWa2.length !== 10) {
+  if (SimuYaMzaminiWa2 && SimuYaMzaminiWa2.length !== 10) {
     showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
     return;
   }
@@ -367,6 +354,55 @@ const handleRegistration = async () => {
             setIsLoading(false);
             return;
         }
+
+           if (Interval < 1) {
+            
+            showAlertFunction('Tafadhali muda wa mkopo unaanzia mwezi 1 mpaka miezi 12');
+            setIsLoading(false);
+            return;
+        }
+
+          if (Interval > 12) {
+            
+            showAlertFunction('Tafadhali muda wa mkopo hauzidi miezi 12');
+            setIsLoading(false);
+            return;
+        }
+
+
+         if (Interval) {
+            formData.append('Interval', Interval);
+        } else {
+            showAlertFunction('Tafadhali jaza muda wa mkopo kwa mwezi');
+            setIsLoading(false);
+            return;
+        }
+
+
+         if (Kiasicha_Riba_Kwa_Muda_Wa_Mkopo) {
+            formData.append('Kiasicha_Riba_Kwa_Muda_Wa_Mkopo', Kiasicha_Riba_Kwa_Muda_Wa_Mkopo);
+        } else {
+            showAlertFunction('Tafadhali jaza Riba ya mkopo');
+            setIsLoading(false);
+            return;
+        }
+
+
+            if (Kiasicha_Riba_Kwa_Muda_Wa_Mkopo < 0) {
+           
+            showAlertFunction('Tafadhali Riba lazima ianzie asilimia moja');
+            setIsLoading(false);
+            return;
+        }
+
+
+
+
+       
+
+
+
+
 
 
 
@@ -406,6 +442,9 @@ const handleRegistration = async () => {
             //setEmailYaMteja('');
             setMahali('');
             setKiasiAnachokopa(0);
+
+            setInterval(0);
+            setKiasicha_Riba_Kwa_Muda_Wa_Mkopo(0);
 
 
 
@@ -517,7 +556,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -526,7 +565,7 @@ const handleRegistration = async () => {
           <FontAwesome size={25} color="green" name="user-circle" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -540,8 +579,8 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -550,7 +589,7 @@ const handleRegistration = async () => {
           
           value={JinaKamiliLaMteja}
           onChangeText={setJinaKamiliLaMteja}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -581,7 +620,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -590,15 +629,16 @@ const handleRegistration = async () => {
            <Image
 
           style={{
-            width:30,
-            height:30,
+            width:20,
+            height:20,
+            borderRadius:30,
           }}
            source={require('../assets/tz.jpg')} 
           >
           </Image>
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -612,7 +652,7 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
+            color: 'white',width:'88%',
 
             //paddingVertical:20,
           }]}
@@ -621,7 +661,7 @@ const handleRegistration = async () => {
           
           value={SimuYaMteja}
           onChangeText={setSimuYaMteja}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -660,16 +700,16 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
           >
 
-          <FontAwesome size={25} color="green" name="user-circle" />
+          <FontAwesome size={25} color="green" name="location-arrow" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -683,8 +723,8 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -693,7 +733,7 @@ const handleRegistration = async () => {
           
           value={Mahali}
           onChangeText={setMahali}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -732,7 +772,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -741,7 +781,7 @@ const handleRegistration = async () => {
           <FontAwesome size={25} color="green" name="user-circle" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -755,8 +795,8 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -765,7 +805,7 @@ const handleRegistration = async () => {
           
           value={JinaLaMzaminiWa1}
           onChangeText={setJinaLaMzaminiWa1}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -796,7 +836,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -805,15 +845,16 @@ const handleRegistration = async () => {
            <Image
 
           style={{
-            width:30,
-            height:30,
+            width:20,
+            height:20,
+            borderRadius:30,
           }}
            source={require('../assets/tz.jpg')} 
           >
           </Image>
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -827,7 +868,7 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
+            color: 'white',width:'88%',
 
             //paddingVertical:20,
           }]}
@@ -836,7 +877,7 @@ const handleRegistration = async () => {
           
           value={SimuYaMzaminiWa1}
           onChangeText={setSimuYaMzaminiWa1}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -871,7 +912,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -880,7 +921,7 @@ const handleRegistration = async () => {
           <FontAwesome size={25} color="green" name="user-circle" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -894,8 +935,8 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -904,7 +945,7 @@ const handleRegistration = async () => {
           
           value={JinaLaMzaminiWa2}
           onChangeText={setJinaLaMzaminiWa2}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -935,7 +976,7 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -944,15 +985,16 @@ const handleRegistration = async () => {
            <Image
 
           style={{
-            width:30,
-            height:30,
+            width:20,
+            height:20,
+            borderRadius:30,
           }}
            source={require('../assets/tz.jpg')} 
           >
           </Image>
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -966,7 +1008,7 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
+            color: 'white',width:'88%',
 
             //paddingVertical:20,
           }]}
@@ -975,7 +1017,7 @@ const handleRegistration = async () => {
           
           value={SimuYaMzaminiWa2}
           onChangeText={setSimuYaMzaminiWa2}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -1006,16 +1048,16 @@ const handleRegistration = async () => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
           >
 
-          <FontAwesome size={25} color="green" name="user-circle" />
+          <FontAwesome size={25} color="green" name="money" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -1029,8 +1071,8 @@ const handleRegistration = async () => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -1039,7 +1081,158 @@ const handleRegistration = async () => {
           
           value={KiasiAnachokopa}
           onChangeText={setKiasiAnachokopa}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+       
+
+
+
+
+
+    {/*  mwanzo wa username*/}
+
+    <Text style={{
+      color:'wheat',
+      textAlign:'Left',
+      marginBottom:10,
+      marginTop:15,
+
+    }}> Muda Wa Mkopo 👇 (mfano: mwezi 1)</Text>
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="clock-o" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Muda Wa Mkopo"
+          keyboardType="numeric"
+          
+          value={Interval}
+          onChangeText={setInterval}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+       
+
+
+
+
+        {/*  mwanzo wa username*/}
+
+         <Text style={{
+      color:'wheat',
+      textAlign:'Left',
+      marginBottom:10,
+      marginTop:15,
+
+    }}> Riba Ya mkopo 👇 (mfano: asilimia 20)</Text>
+
+
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="money" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Riba Ya mkopo"
+          keyboardType="numeric"
+          
+          value={Kiasicha_Riba_Kwa_Muda_Wa_Mkopo}
+          onChangeText={setKiasicha_Riba_Kwa_Muda_Wa_Mkopo}
+        placeholderTextColor="white"
         />
 
       
@@ -1062,7 +1255,7 @@ const handleRegistration = async () => {
 
         < View style={[globalStyles.inputTax,
           {
-            backgroundColor:'black',
+            backgroundColor:'#0f172a',
             marginHorizontal:0,
             width:'100%',
           }
@@ -1124,7 +1317,7 @@ const handleRegistration = async () => {
 
         < View style={[globalStyles.inputTax,
           {
-            backgroundColor:'black',
+            backgroundColor:'#0f172a',
             marginHorizontal:0,
             width:'100%',
           }
@@ -1187,7 +1380,7 @@ const handleRegistration = async () => {
                 flexDirection:'row',
                 justifyContent:'space-between',
                 alignItems:'center',
-                  backgroundColor:'black',
+                  backgroundColor:'#0f172a',
                   marginTop:50,
                   paddingVertical:10,
                   paddingHorizontal:40,
@@ -1195,7 +1388,7 @@ const handleRegistration = async () => {
                   color:'white',
                   borderColor:'green',
                   borderWidth:1,
-               // backgroundColor:'black'
+               // backgroundColor:'white'
               }}
               onPress={handleRegistration}>
                 <Text style={styles.registerLbl}>Sajili mteja</Text>
@@ -1281,7 +1474,7 @@ export default AddMteja;
 
 const styles = StyleSheet.create({
   mainCon: {
-    backgroundColor: 'white',
+    backgroundColor: '#0f172a',
     flex: 1,
   },
   loginIcon: {
@@ -1299,7 +1492,7 @@ const styles = StyleSheet.create({
     bottom: 40,
   },
   loginLbl: {
-    color: '#000',
+    color: '#fff',
     fontSize: 20,
     marginBottom:10,
     textAlign:'center',
@@ -1311,14 +1504,14 @@ const styles = StyleSheet.create({
     bottom: 35,
   },
   forgotDesLbl: {
-    color: '#000',
+    color: '#fff',
    // fontFamily: Fonts.type.NotoSansRegular,
   },
   //registerLbl: {color: '#0057ff', fontFamily: Fonts.type.NotoSansSemiBold},
 
 
 registerLbl:{
-  // backgroundColor:'black',
+  // backgroundColor:'white',
   // marginTop:70,
   // paddingVertical:10,
   // paddingHorizontal:40,
@@ -1348,7 +1541,7 @@ registerLbl:{
         fontFamily:'Light',
 
         borderWidth:2,
-        borderColor:'black',
+        borderColor:'white',
     },
 
 
@@ -1371,7 +1564,7 @@ registerLbl:{
         flex:1,
 
         borderWidth:2,
-        borderColor:'black',
+        borderColor:'white',
         
          
     },

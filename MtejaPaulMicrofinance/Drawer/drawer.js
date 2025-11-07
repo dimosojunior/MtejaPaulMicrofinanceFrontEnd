@@ -283,7 +283,13 @@ const [dropdownVisible2, setDropdownVisible2] = useState(false);
 
                   </View>
 
-             {userData && userData.is_admin === true && (
+       
+                  <DrawerItemList {...props} />
+
+
+
+
+                {userData && userData.is_admin === true && (
                    <TouchableOpacity
               style={{
                 flexDirection: "row",
@@ -360,7 +366,6 @@ const [dropdownVisible2, setDropdownVisible2] = useState(false);
 )}
 
 
-                  <DrawerItemList {...props} />
 
 
               

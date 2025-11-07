@@ -23,6 +23,7 @@ import MinorHeader from '../Header/MinorHeader';
 import Checkbox from 'expo-checkbox'; // Make sure to install this package
 import {Picker} from '@react-native-picker/picker';
 import LotterViewScreen from '../Screens/LotterViewScreen';
+import { AppName } from '../Constant/links';
 
 const {width,height} = Dimensions.get('window');
 const SignupScreen = ({ navigation }) => {
@@ -367,7 +368,7 @@ const handleErrorMessage = (error) => {
           </View>
           <View style={styles.container}>
               <View style={styles.loginLblCon}>
-              <Text style={styles.loginLbl}>TMCL</Text>
+              <Text style={styles.loginLbl}>{AppName}</Text>
             </View>
 
 
@@ -399,7 +400,7 @@ const handleErrorMessage = (error) => {
 
         < View style={[globalStyles.inputTax,
           {
-            backgroundColor:'black',
+            backgroundColor:'#0f172a',
             marginHorizontal:0,
             width:'100%',
           }
@@ -475,7 +476,7 @@ const handleErrorMessage = (error) => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -484,7 +485,7 @@ const handleErrorMessage = (error) => {
           <FontAwesome size={25} color="green" name="user-circle" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -498,8 +499,8 @@ const handleErrorMessage = (error) => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'88%',
-            //backgroundColor:'black',
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
 
             //paddingVertical:20,
           }]}
@@ -508,7 +509,7 @@ const handleErrorMessage = (error) => {
           
           value={username}
           onChangeText={setUsername}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
       
@@ -524,10 +525,10 @@ const handleErrorMessage = (error) => {
               style={[styles.textinput,{
                   width:width-20,
                   //height:70,
-                  color:'black',
+                  color:'white',
                   marginTop:20,
               }]} 
-              placeholderTextColor="black"
+              placeholderTextColor="white"
              value={phone}
               onChangeText={setPhone}
               
@@ -562,7 +563,7 @@ const handleErrorMessage = (error) => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -571,7 +572,7 @@ const handleErrorMessage = (error) => {
           <FontAwesome size={25} color="green" name="key" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -584,14 +585,14 @@ const handleErrorMessage = (error) => {
 
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',
+            color: 'white',
           width:'65%'
         }]}
           placeholder="Neno siri la kuingilia"
           secureTextEntry={!isPasswordVisible} // Toggle secureTextEntry based on isPasswordVisible state
          value={password}
           onChangeText={(text) => setPassword(text)}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
         <View style={{
@@ -602,13 +603,13 @@ const handleErrorMessage = (error) => {
          {/* Add a button to toggle password visibility */}
         <TouchableOpacity
           onPress={() => setPasswordVisible(!isPasswordVisible)}
-          style={{ alignSelf: 'flex-end', marginRight: 0,color:'black' }}>
-          <Text style={{ color: 'black', fontSize: 16,fontWeight:'bold' }}>
+          style={{ alignSelf: 'flex-end', marginRight: 0,color:'white' }}>
+          <Text style={{ color: 'white', fontSize: 16,fontWeight:'bold' }}>
             {/*{isPasswordVisible ? 'Hide' : 'Show'} Password*/}
             {isPasswordVisible ? (
-              <FontAwesome size={25} color="black" name="eye-slash" />
+              <FontAwesome size={25} color="white" name="eye-slash" />
             ):(
-              <FontAwesome size={25} color="black" name="eye" />
+              <FontAwesome size={25} color="white" name="eye" />
             )}
           </Text>
         </TouchableOpacity>
@@ -644,7 +645,7 @@ const handleErrorMessage = (error) => {
           
           style={{ 
             alignSelf: 'flex-start', 
-            marginRight: 0,color:'black',
+            marginRight: 0,color:'white',
             flexDirection:'row',
             alignItems:'center',
              }}
@@ -653,7 +654,7 @@ const handleErrorMessage = (error) => {
           <FontAwesome size={25} color="green" name="key" />
 
         {/*  <Text style={{
-           color: 'black', 
+           color: 'white', 
            fontSize: 16,
            fontWeight:'bold',
            marginLeft:10,
@@ -665,14 +666,14 @@ const handleErrorMessage = (error) => {
         </View>
           <TextInput
           style= {[styles.textinputi,{ 
-            color: 'black',width:'65%',
+            color: 'white',width:'65%',
             //paddingVertical:20,
           }]}
           placeholder=" Rudia neno siri"
           secureTextEntry={!isPasswordVisible} // Toggle secureTextEntry based on isPasswordVisible state
           value={password2}
           onChangeText={setPassword2}
-        placeholderTextColor="black"
+        placeholderTextColor="white"
         />
 
         <View style={{
@@ -683,13 +684,13 @@ const handleErrorMessage = (error) => {
          {/* Add a button to toggle password visibility */}
         <TouchableOpacity
           onPress={() => setPasswordVisible(!isPasswordVisible)}
-          style={{ alignSelf: 'flex-end', marginRight: 0,color:'black' }}>
-          <Text style={{ color: 'black', fontSize: 16,fontWeight:'bold' }}>
+          style={{ alignSelf: 'flex-end', marginRight: 0,color:'white' }}>
+          <Text style={{ color: 'white', fontSize: 16,fontWeight:'bold' }}>
             {/*{isPasswordVisible ? 'Hide' : 'Show'} Password*/}
             {isPasswordVisible ? (
-              <FontAwesome size={25} color="black" name="eye-slash" />
+              <FontAwesome size={25} color="white" name="eye-slash" />
             ):(
-              <FontAwesome size={25} color="black" name="eye" />
+              <FontAwesome size={25} color="white" name="eye" />
             )}
           </Text>
         </TouchableOpacity>
@@ -761,7 +762,7 @@ const handleErrorMessage = (error) => {
                 flexDirection:'row',
                 justifyContent:'space-between',
                 alignItems:'center',
-                  backgroundColor:'green',
+                  backgroundColor:'#0f172a',
                   marginTop:50,
                   paddingVertical:10,
                   paddingHorizontal:40,
@@ -769,7 +770,7 @@ const handleErrorMessage = (error) => {
                   color:'white',
                   borderColor:'white',
                   borderWidth:1,
-               // backgroundColor:'black'
+               // backgroundColor:'white'
               }}
               onPress={handleRegistration}>
                 <Text style={styles.registerLbl}>Sajili taarifa za kituo</Text>
@@ -829,7 +830,7 @@ const handleErrorMessage = (error) => {
                 customView={
                   <View style={globalStyles.alertContent}>
                     <Image source={require('../assets/icon.png')} style={globalStyles.alertImage} />
-                    <Text style={globalStyles.alertTitle}>TMCL</Text>
+                    <Text style={globalStyles.alertTitle}>{AppName}</Text>
                     <Text style={globalStyles.alertMessage}>{alertMessage}</Text>
                   </View>
                 }
@@ -864,7 +865,7 @@ export default SignupScreen;
 
 const styles = StyleSheet.create({
   mainCon: {
-    backgroundColor: 'white',
+    backgroundColor: '#0f172a',
     flex: 1,
   },
   loginIcon: {
@@ -882,7 +883,7 @@ const styles = StyleSheet.create({
     bottom: 40,
   },
   loginLbl: {
-    color: '#000',
+    color: '#fff',
     fontSize: 20,
     marginBottom:10,
     textAlign:'center',
@@ -895,14 +896,14 @@ const styles = StyleSheet.create({
     bottom: 35,
   },
   forgotDesLbl: {
-    color: '#000',
+    color: '#fff',
    // fontFamily: Fonts.type.NotoSansRegular,
   },
   //registerLbl: {color: '#0057ff', fontFamily: Fonts.type.NotoSansSemiBold},
 
 
 registerLbl:{
-  // backgroundColor:'black',
+  // backgroundColor:'white',
   // marginTop:70,
   // paddingVertical:10,
   // paddingHorizontal:40,
@@ -932,7 +933,7 @@ registerLbl:{
         fontFamily:'Light',
 
         borderWidth:2,
-        borderColor:'black',
+        borderColor:'white',
     },
 
 
@@ -955,7 +956,7 @@ registerLbl:{
         flex:1,
 
         borderWidth:2,
-        borderColor:'black',
+        borderColor:'white',
         
          
     },
@@ -989,6 +990,7 @@ registerLbl:{
     marginLeft: 8,
     //fontSize: 16,
     fontFamily: 'Light',
+    color:'white',
   },
 
 

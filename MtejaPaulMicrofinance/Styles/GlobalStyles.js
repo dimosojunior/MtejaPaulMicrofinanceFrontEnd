@@ -6,6 +6,7 @@ import { StyleSheet, Text,Dimensions, View, Button,Platform } from 'react-native
 //ItemHomeScreenRightContainerIcon
 //iconHeaderFile
 //header
+//headerImageHeaderFile
 
 
 const {height, width} = Dimensions.get('window');
