@@ -7,6 +7,7 @@ import { StyleSheet, Text,Dimensions, View, Button,Platform } from 'react-native
 //iconHeaderFile
 //header
 //headerImageHeaderFile
+//TaarifaBinafsiSimuYaMteja
 
 
 const {height, width} = Dimensions.get('window');
@@ -722,9 +723,11 @@ TaarifaBinafsiSimuYaMteja:{
   color:'white',
   borderColor:'white',
   borderWidth:1,
-  paddingHorizontal:40,
+  //paddingHorizontal:40,
   paddingVertical:12,
   borderRadius:8,
+  width:'80%',
+  textAlign:'center',
 },
 TaarifaBinafsimkopo:{
   flexDirection:'row',

@@ -56,6 +56,7 @@ import DeleteTaarifaZaKituo from '../Screens/DeleteTaarifaZaKituo';
 import TumaUjumbe from '../Screens/TumaUjumbe';
 
 import RenewMteja from '../Wateja/RenewMteja';
+import RenewMtumishi from '../Wateja/RenewMtumishi';
 import RiportSummary from '../Screens/RiportSummary';
 
 import MyTab from '../Tab/MyTab';
@@ -352,6 +353,16 @@ function MyStack( {navigation}){
       //       headerLeft: () => <Header  title='About Page' />,
       //     })}
       />
+
+
+          <Stack.Screen
+      name="Renew Mtumishi"
+      component={RenewMtumishi}
+      // options={ () => ({ 
+      //       headerLeft: () => <Header  title='About Page' />,
+      //     })}
+      />
+
 
 
             <Stack.Screen

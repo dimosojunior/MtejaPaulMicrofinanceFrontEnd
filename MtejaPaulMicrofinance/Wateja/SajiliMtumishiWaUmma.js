@@ -26,7 +26,7 @@ import { AppName } from '../Constant/links';
 
 const { width, height } = Dimensions.get('window');
 
-const AddMteja = ({ navigation }) => {
+const SajiliMtumishiWaUmma = ({ navigation }) => {
   let [fontsLoaded] = useFonts({
     'Bold': require('../assets/fonts/Poppins-Bold.ttf'),
     'Medium': require('../assets/fonts/Poppins-Medium.ttf'),
@@ -407,6 +407,42 @@ const handleRegistration = async () => {
 
 
 
+  if (AinaYaKazi) {
+            formData.append('AinaYaKazi', AinaYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza aina ya kazi ya mteja ');
+            setIsLoading(false);
+            return;
+        }
+  if (KituoChaKazi) {
+            formData.append('KituoChaKazi', KituoChaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza kituo cha kazi cha mteja ');
+            setIsLoading(false);
+            return;
+        }
+
+  if (IdaraYaKazi) {
+            formData.append('IdaraYaKazi', IdaraYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza idara ya kazi ya mteja ');
+            setIsLoading(false);
+            return;
+        }
+  if (KataYaKazi) {
+            formData.append('KataYaKazi', KataYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza kata ya kazi anapofanyia mteja ');
+            setIsLoading(false);
+            return;
+        }
+  if (CheckNo) {
+            formData.append('CheckNo', CheckNo);
+        } else {
+            showAlertFunction('Tafadhali jaza check number ya mteja ');
+            setIsLoading(false);
+            return;
+        }
 
 
 
@@ -451,6 +487,12 @@ const handleRegistration = async () => {
 
             setInterval(0);
             setKiasicha_Riba_Kwa_Muda_Wa_Mkopo(0);
+
+            setAinaYaKazi('');
+            setKituoChaKazi('');
+            setIdaraYaKazi('');
+            setKataYaKazi('');
+            setCheckNo('');
 
 
 
@@ -537,6 +579,16 @@ const handleRegistration = async () => {
                 
                
               />*/}
+
+
+
+
+
+
+
+
+{!OngezaPichaClose && (
+            <>
 
           
 
@@ -1250,6 +1302,345 @@ const handleRegistration = async () => {
 
 
 
+</>
+)}
+
+
+
+ {OngezaPichaOpen && (
+            <>
+
+
+
+
+
+                 {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="user-md" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Aina Ya Kazi (mfano: mwalimu)"
+          //keyboardType="numeric"
+          
+          value={AinaYaKazi}
+          onChangeText={setAinaYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+
+             {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="industry" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Kituo Cha kazi (mfano: Mgore Microfinance)"
+          //keyboardType="numeric"
+          
+          value={KituoChaKazi}
+          onChangeText={setKituoChaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+         {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="indent" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Idara Ya Kazi (mfano: Elimu)"
+          //keyboardType="numeric"
+          
+          value={IdaraYaKazi}
+          onChangeText={setIdaraYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+        {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="compass" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Kata Ya Kazi (mfano: Mbeya Mjini)"
+          //keyboardType="numeric"
+          
+          value={KataYaKazi}
+          onChangeText={setKataYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+
+  {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="credit-card" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Check Number"
+          keyboardType="numeric"
+          
+          value={CheckNo}
+          onChangeText={setCheckNo}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+
+
 
 
 
@@ -1376,6 +1767,111 @@ const handleRegistration = async () => {
 
 
 
+</>
+)}
+
+
+
+
+
+
+<View style={{
+  justifyContent:'space-between',
+  alignItems:'center',
+  flexDirection:'row',
+  width:'100%',
+
+
+}}>
+
+{OngezaPichaOpen && (
+
+   <Pressable 
+    style={{
+      flexDirection:'row',
+      justifyContent:'space-around',
+      alignItems:'center',
+        backgroundColor:'blue',
+        marginTop:50,
+        paddingVertical:10,
+        //paddingHorizontal:40,
+        borderRadius:8,
+        color:'white',
+        borderColor:'wheat',
+        borderWidth:1,
+        width:'40%',
+     // backgroundColor:'white'
+
+    }}
+   
+     onPress={() => {
+  setOngezaPichaOpen(false);
+  setOngezaPichaClose(false);
+}}
+
+    >
+     <FontAwesome name='arrow-circle-left' 
+      size={28}
+      color='white' 
+      style={{
+       // marginTop:70,
+      }} 
+      
+       />
+      <Text style={styles.registerLbl}>Nyuma</Text>
+      
+      </Pressable>
+
+)}
+
+
+
+
+
+{!OngezaPichaOpen && (
+
+   <Pressable 
+    style={{
+      flexDirection:'row',
+      justifyContent:'space-around',
+      alignItems:'center',
+        backgroundColor:'blue',
+        marginTop:50,
+        paddingVertical:10,
+        //paddingHorizontal:40,
+        borderRadius:8,
+        color:'black',
+        borderColor:'wheat',
+        borderWidth:1,
+        width:'40%',
+     // backgroundColor:'white'
+    }}
+   
+     onPress={() => {
+  setOngezaPichaOpen(true);
+  setOngezaPichaClose(true);
+}}
+
+    >
+      <Text style={styles.registerLbl}>Endelea</Text>
+       <FontAwesome name='arrow-circle-right' 
+      size={28}
+      color='white' 
+      style={{
+       // marginTop:70,
+      }} 
+      
+       />
+      </Pressable>
+
+)}
+
+
+
+
+</View>
+
+
 
 
 {/*mwanzo wa forget password*/}
@@ -1476,7 +1972,7 @@ const handleRegistration = async () => {
   );
 };
 
-export default AddMteja;
+export default SajiliMtumishiWaUmma;
 
 const styles = StyleSheet.create({
   mainCon: {

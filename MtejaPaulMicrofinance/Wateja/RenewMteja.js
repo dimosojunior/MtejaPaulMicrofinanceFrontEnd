@@ -138,6 +138,11 @@ const [Interval, setInterval] = useState('1');
 const [Kiasicha_Riba_Kwa_Muda_Wa_Mkopo, setKiasicha_Riba_Kwa_Muda_Wa_Mkopo] = useState('20');
 
 
+const [AinaYaKazi, setAinaYaKazi] = useState('');
+const [KituoChaKazi, setKituoChaKazi] = useState('');
+const [IdaraYaKazi, setIdaraYaKazi] = useState('');
+const [KataYaKazi, setKataYaKazi] = useState('');
+const [CheckNo, setCheckNo] = useState('');
 
 // const [Title, setTitle] = useState('');
 // const [Maelezo, setMaelezo] = useState('');
@@ -253,7 +258,11 @@ useEffect(() => {
        setInterval(data.Interval.toString()); 
        setKiasicha_Riba_Kwa_Muda_Wa_Mkopo(data.Kiasicha_Riba_Kwa_Muda_Wa_Mkopo.toString()); 
 
-
+       // setAinaYaKazi(data.AinaYaKazi);
+       // setKituoChaKazi(data.KituoChaKazi);
+       // setIdaraYaKazi(data.IdaraYaKazi);
+       // setKataYaKazi(data.KataYaKazi);
+       // setCheckNo(data.CheckNo.toString()); 
         //console.log("Data fetched successfully");
       } catch (error) {
         handleErrorMessage(error);

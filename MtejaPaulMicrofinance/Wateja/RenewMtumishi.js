@@ -24,9 +24,22 @@ import { AppName } from '../Constant/links';
 
 // {AppName}
 
+
 const { width, height } = Dimensions.get('window');
 
-const AddMteja = ({ navigation }) => {
+const RenewMtumishi = ({ navigation, route }) => {
+
+  const { postId } = route.params;
+  // const [postDetails, setPostDetails] = useState({
+  //   Title: '',
+  //   Maelezo: '',
+  //   // PichaYaPost: '',
+  //   // PichaYaPost2: '',
+  //   // PichaYaPost3: '',
+  //   // PichaYaPost4: '',
+  //   // PichaYaPost5: '',
+  // });
+
   let [fontsLoaded] = useFonts({
     'Bold': require('../assets/fonts/Poppins-Bold.ttf'),
     'Medium': require('../assets/fonts/Poppins-Medium.ttf'),
@@ -50,6 +63,55 @@ const AddMteja = ({ navigation }) => {
 
 
 
+  // State variable to store the RoomClasses data
+  const [JinaLaKituo, setJinaLaKituo] = useState([]);
+ const [selectedJinaLaKituo, setSelectedJinaLaKituo] = useState(null);
+ 
+  // Fetch Universities
+  useEffect(() => {
+    fetch(`${EndPoint}/Add/AllVituoVyote/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setJinaLaKituo(data);
+        //console.log("Well");
+        
+        // Set the default selectedRoomClass if needed
+        //setSelectedRoomClass(data[0]); // For example, set the first RoomClass as default
+      })
+      .catch((error) => {
+        //console.error('Error fetching Product categories:', error);
+        //showAlertFunction("Error fetching Universities");
+      });
+  }, []);
+
+
+
+
+
+  // State variable to store the RoomClasses data
+  const [Aina, setAina] = useState([]);
+ const [selectedAina, setSelectedAina] = useState(null);
+ 
+  // Fetch Universities
+  useEffect(() => {
+    fetch(`${EndPoint}/Add/AllAinaZaMarejesho/`)
+      .then((response) => response.json())
+      .then((data) => {
+        setAina(data);
+        //console.log("Well");
+        
+        // Set the default selectedRoomClass if needed
+        //setSelectedRoomClass(data[0]); // For example, set the first RoomClass as default
+      })
+      .catch((error) => {
+        //console.error('Error fetching Product categories:', error);
+        //showAlertFunction("Error fetching Universities");
+      });
+  }, []);
+
+
+
+
 
 const [modalVisible, setModalVisible] = useState(false);
 const [isModalVisible, setIsModalVisible] = useState(false); // New state variable
@@ -60,40 +122,17 @@ const [OngezaPichaClose, setOngezaPichaClose] = useState(false);
 
 
 
-
-
-const [PichaYaMteja, setPichaYaMteja] = useState(null);
-
-
-
-//MWANZO WA PICK IMAGE FROM THE PHONE
-  const pickImage = async () => {
-    let result = await ImagePicker.launchImageLibraryAsync({
-      mediaTypes: ImagePicker.MediaTypeOptions.All,
-      allowsEditing: true,
-      aspect: [1, 1],
-      quality: 1,
-    });
- 
-      setPichaYaMteja(result.assets[0].uri); // Use assets array
-      //console.log("PROJECT IMAGE", PichaYaMteja)
-     // processImage(); // Use assets array
-    // console.log("RESULT 1" ,result);
-  };
-
-
-
-
 const [JinaKamiliLaMteja, setJinaKamiliLaMteja] = useState('');
 const [MaelezoYaMteja, setMaelezoYaMteja] = useState('');
 const [SimuYaMteja, setSimuYaMteja] = useState('');
 //const [EmailYaMteja, setEmailYaMteja] = useState('');
 const [Mahali, setMahali] = useState('');
-const [KiasiAnachokopa, setKiasiAnachokopa] = useState(0);
+const [KiasiAnachokopa, setKiasiAnachokopa] = useState('');
 const [SimuYaMzaminiWa1, setSimuYaMzaminiWa1] = useState('');
 const [SimuYaMzaminiWa2, setSimuYaMzaminiWa2] = useState('');
 const [JinaLaMzaminiWa1, setJinaLaMzaminiWa1] = useState('');
 const [JinaLaMzaminiWa2, setJinaLaMzaminiWa2] = useState('');
+
 
 const [Interval, setInterval] = useState('1');
 const [Kiasicha_Riba_Kwa_Muda_Wa_Mkopo, setKiasicha_Riba_Kwa_Muda_Wa_Mkopo] = useState('20');
@@ -105,6 +144,8 @@ const [IdaraYaKazi, setIdaraYaKazi] = useState('');
 const [KataYaKazi, setKataYaKazi] = useState('');
 const [CheckNo, setCheckNo] = useState('');
 
+// const [Title, setTitle] = useState('');
+// const [Maelezo, setMaelezo] = useState('');
 
   const [userData, setUserData] = useState({});
   const [userToken, setUserToken] = useState('');
@@ -169,7 +210,7 @@ const [CheckNo, setCheckNo] = useState('');
   const [isPending, setPending] = useState(false);
   const emailRegex = /\S+@\S+\.\S+/;
 
-  
+  //console.log("PichaYaPost", PichaYaPost);
 
   const handleErrorMessage = (error) => {
     if (error.response) {
@@ -179,7 +220,7 @@ const [CheckNo, setCheckNo] = useState('');
       showAlertFunction('Tatizo la mtandao, washa data na ujaribu tena.');
       setIsLoading(false);
     } else {
-      showAlertFunction('Kuna tatizo kwenye usajili wa mteja mpya');
+      showAlertFunction('Kuna tatizo kwenye ubadilishaji wa taarifa za mteja');
       setIsLoading(false);
     }
   };
@@ -188,62 +229,80 @@ const [CheckNo, setCheckNo] = useState('');
 
 
 
-  // State variable to store the RoomClasses data
-  const [JinaLaKituo, setJinaLaKituo] = useState([]);
- const [selectedJinaLaKituo, setSelectedJinaLaKituo] = useState(null);
- 
-  // Fetch Universities
-  useEffect(() => {
-    fetch(`${EndPoint}/Add/AllVituoVyote/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setJinaLaKituo(data);
-        //console.log("Well");
-        
-        // Set the default selectedRoomClass if needed
-        //setSelectedRoomClass(data[0]); // For example, set the first RoomClass as default
-      })
-      .catch((error) => {
-        //console.error('Error fetching Product categories:', error);
-        //showAlertFunction("Error fetching Universities");
-      });
-  }, []);
+
+
+useEffect(() => {
+  const fetchPostDetails = async () => {
+    const token = await AsyncStorage.getItem('userToken');
+    if (token) {
+      setUserToken(token);  // Set the token before making the API call
+      try {
+        const response = await axios.get(`${EndPoint}/RetrieveWatejaWoteView/${postId}/`, {
+          headers: {
+            Authorization: `Token ${token}`,  // Use the retrieved token
+          },
+        });
+        const data = response.data;
+
+       setJinaKamiliLaMteja(data.JinaKamiliLaMteja);
+       setMaelezoYaMteja(data.MaelezoYaMteja);
+       setSimuYaMteja(data.SimuYaMteja.toString());
+       setMahali(data.Mahali);
+       setKiasiAnachokopa(data.KiasiAnachokopa.toString()); // Convert to string
+       
+       setSimuYaMzaminiWa1(data.SimuYaMzaminiWa1.toString());
+       setSimuYaMzaminiWa2(data.SimuYaMzaminiWa2.toString());
+       setJinaLaMzaminiWa1(data.JinaLaMzaminiWa1);
+       setJinaLaMzaminiWa2(data.JinaLaMzaminiWa2);
+
+       setInterval(data.Interval.toString()); 
+       setKiasicha_Riba_Kwa_Muda_Wa_Mkopo(data.Kiasicha_Riba_Kwa_Muda_Wa_Mkopo.toString()); 
+
+       setAinaYaKazi(data.AinaYaKazi);
+       setKituoChaKazi(data.KituoChaKazi);
+       setIdaraYaKazi(data.IdaraYaKazi);
+       setKataYaKazi(data.KataYaKazi);
+       setCheckNo(data.CheckNo.toString()); 
+        //console.log("Data fetched successfully");
+      } catch (error) {
+        handleErrorMessage(error);
+        //console.log("Error fetching post details:", error);
+      }
+    }
+  };
+  
+  // Ensure token is available first before making the API call
+  if (userToken) {
+    fetchPostDetails();
+  }
+}, [postId, userToken]);
+
+// Fetch user token first in a separate useEffect
+useEffect(() => {
+  const getToken = async () => {
+    const token = await AsyncStorage.getItem('userToken');
+    setUserToken(token);  // Token is set here
+  };
+  getToken();
+}, []);  // Run this only once when the component is mounted
 
 
 
-  // State variable to store the RoomClasses data
-  const [Aina, setAina] = useState([]);
- const [selectedAina, setSelectedAina] = useState(null);
- 
-  // Fetch Universities
-  useEffect(() => {
-    fetch(`${EndPoint}/Add/AllAinaZaMarejesho/`)
-      .then((response) => response.json())
-      .then((data) => {
-        setAina(data);
-        //console.log("Well");
-        
-        // Set the default selectedRoomClass if needed
-        //setSelectedRoomClass(data[0]); // For example, set the first RoomClass as default
-      })
-      .catch((error) => {
-        //console.error('Error fetching Product categories:', error);
-        //showAlertFunction("Error fetching Universities");
-      });
-  }, []);
 
 
+console.log("SimuYaMteja", SimuYaMteja);
+console.log("KiasiAnachokopa", KiasiAnachokopa);
 
-
-
-const handleRegistration = async () => {
+  const handleUpdatePost = async () => {
     setIsLoading(true);
     const token = await AsyncStorage.getItem('userToken');
 
     if (userToken) {
-        const formData = new FormData();
-        
-        if (JinaKamiliLaMteja) {
+      const formData = new FormData();
+    
+
+
+  if (JinaKamiliLaMteja) {
             formData.append('JinaKamiliLaMteja', JinaKamiliLaMteja);
         } else {
             showAlertFunction('Tafadhali ingiza jina la mteja ?');
@@ -262,13 +321,14 @@ const handleRegistration = async () => {
         }
 
 
-         if (selectedAina) {
+             if (selectedAina) {
           formData.append('Aina', selectedAina);
         } else {
           showAlertFunction('Tafadhali chagua aina ya mpokeaji wa mkopo.');
           setIsLoading(false);
           return;
         }
+
 
 
 
@@ -280,7 +340,7 @@ const handleRegistration = async () => {
             return;
         }
 
-             if (SimuYaMzaminiWa1) {
+                if (SimuYaMzaminiWa1) {
             formData.append('SimuYaMzaminiWa1', SimuYaMzaminiWa1);
         }
 
@@ -299,50 +359,6 @@ const handleRegistration = async () => {
 
 
 
-        //   if (EmailYaMteja) {
-        //     formData.append('EmailYaMteja', EmailYaMteja);
-        // } 
-
-        //   if (!emailRegex.test(EmailYaMteja)) {
-        //   showAlertFunction("Tafadhali fuata kanuni za kuandika email, @");
-        //   return;
-        // }
-
-
-          // Validate phone number
-  if (SimuYaMteja && !SimuYaMteja.startsWith("0")) {
-    showAlertFunction("Namba ya simu lazima ianze na 0");
-    return;
-  }
-
-  if (SimuYaMteja && SimuYaMteja.length !== 10) {
-    showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
-    return;
-  }
-
-
-           // Validate phone number
-  if (SimuYaMzaminiWa1 && !SimuYaMzaminiWa1.startsWith("0")) {
-    showAlertFunction("Namba ya simu lazima ianze na 0");
-    return;
-  }
-
-  if (SimuYaMzaminiWa1 && SimuYaMzaminiWa1.length !== 10) {
-    showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
-    return;
-  }
-
-
-           // Validate phone number
-  if (SimuYaMzaminiWa2 && !SimuYaMzaminiWa2.startsWith("0")) {
-    showAlertFunction("Namba ya simu lazima ianze na 0");
-    return;
-  }
-
-  if (SimuYaMzaminiWa2 && SimuYaMzaminiWa2.length !== 10) {
-    showAlertFunction("Namba ya simu lazima iwe na tarakimu 10");
-    return;
-  }
 
 
           if (Mahali) {
@@ -362,7 +378,8 @@ const handleRegistration = async () => {
             return;
         }
 
-           if (Interval < 1) {
+
+             if (Interval < 1) {
             
             showAlertFunction('Tafadhali muda wa mkopo unaanzia mwezi 1 mpaka miezi 12');
             setIsLoading(false);
@@ -405,63 +422,76 @@ const handleRegistration = async () => {
 
 
 
-
-
-
-
-
-
-
         if (MaelezoYaMteja) {
             formData.append('MaelezoYaMteja', MaelezoYaMteja);
         } 
 
-        // Ongeza picha kwenye `FormData` tu kama imechaguliwa
-        if (PichaYaMteja) {
-            formData.append('PichaYaMteja', {
-                uri: PichaYaMteja,
-                name: 'PichaYaMteja.jpg',
-                type: 'image/jpeg',
-            });
+
+
+
+  if (AinaYaKazi) {
+            formData.append('AinaYaKazi', AinaYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza aina ya kazi ya mteja ');
+            setIsLoading(false);
+            return;
+        }
+  if (KituoChaKazi) {
+            formData.append('KituoChaKazi', KituoChaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza kituo cha kazi cha mteja ');
+            setIsLoading(false);
+            return;
         }
 
-      
-
-        axios.post(EndPoint + '/AddWatejaWoteView/', formData, {
-            headers: {
-                Authorization: `Token ${userToken}`,
-                'Content-Type': 'multipart/form-data',
-            },
-        }).then(response => {
+  if (IdaraYaKazi) {
+            formData.append('IdaraYaKazi', IdaraYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza idara ya kazi ya mteja ');
             setIsLoading(false);
-            showAlertFunction("Umefanikiwa Kumsajili mteja mpya");
-            setdisplayContentsState(true);
-            //console.log("Well");
-            setJinaKamiliLaMteja('');
-            setJinaLaMzaminiWa1('');
-            setJinaLaMzaminiWa2('');
-            setPichaYaMteja('');
-            setMaelezoYaMteja('');
-            setSimuYaMteja(0);
-            setSimuYaMzaminiWa1(0);
-            setSimuYaMzaminiWa2(0);
-            //setEmailYaMteja('');
-            setMahali('');
-            setKiasiAnachokopa(0);
-
-            setInterval(0);
-            setKiasicha_Riba_Kwa_Muda_Wa_Mkopo(0);
-
-
-
-        }).catch(error => {
+            return;
+        }
+  if (KataYaKazi) {
+            formData.append('KataYaKazi', KataYaKazi);
+        } else {
+            showAlertFunction('Tafadhali jaza kata ya kazi anapofanyia mteja ');
             setIsLoading(false);
-            setdisplayContentsState(false);
-            console.log("ERRORR", error);
-            handleErrorMessage(error);
-        });
+            return;
+        }
+  if (CheckNo) {
+            formData.append('CheckNo', CheckNo);
+        } else {
+            showAlertFunction('Tafadhali jaza check number ya mteja ');
+            setIsLoading(false);
+            return;
+        }
+
+
+        
+
+
+
+
+ 
+      axios.put(EndPoint + `/UpdateWatejaWotePostView/${postId}/edit/`, formData, {
+        headers: {
+          Authorization: `Token ${userToken}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      }).then(response => {
+        setIsLoading(false);
+        showAlertFunction("Umefanikiwa kumsajili mteja");
+        navigation.replace('Home Stack');
+        //console.log("Well");
+      }).catch(error => {
+        setIsLoading(false);
+        console.log(error);
+        handleErrorMessage(error);
+      });
     }
-};
+  };
+
+
 
 
 
@@ -524,7 +554,7 @@ const handleRegistration = async () => {
 
             <View style={styles.forgotDes}>
               <Text style={styles.forgotDesLbl}>
-                Ingiza taarifa kwa usahihi kuweza kumsajili mteja
+                Ingiza taarifa kwa usahihi kuweza kumsajili mteja tena
               </Text>
            {/*   <Text style={styles.forgotDesLbl}>+91 1234567890</Text>*/}
             </View>
@@ -537,6 +567,13 @@ const handleRegistration = async () => {
                 
                
               />*/}
+
+          
+
+
+
+{!OngezaPichaClose && (
+            <>
 
           
 
@@ -637,7 +674,7 @@ const handleRegistration = async () => {
           style={{
             width:20,
             height:20,
-            borderRadius:30,
+            borderRadius:30
           }}
            source={require('../assets/tz.jpg')} 
           >
@@ -806,7 +843,7 @@ const handleRegistration = async () => {
 
             //paddingVertical:20,
           }]}
-          placeholder="Ingiza jina kamili la mzamini wa kwanza"
+          placeholder="Ingiza jina la mzamini wa kwanza"
           //keyboardType="numeric"
           
           value={JinaLaMzaminiWa1}
@@ -853,7 +890,7 @@ const handleRegistration = async () => {
           style={{
             width:20,
             height:20,
-            borderRadius:30,
+            borderRadius:30
           }}
            source={require('../assets/tz.jpg')} 
           >
@@ -946,7 +983,7 @@ const handleRegistration = async () => {
 
             //paddingVertical:20,
           }]}
-          placeholder="Ingiza jina kamili la mzamini wa pili"
+          placeholder="Ingiza jina la mzamini wa pili"
           //keyboardType="numeric"
           
           value={JinaLaMzaminiWa2}
@@ -993,7 +1030,7 @@ const handleRegistration = async () => {
           style={{
             width:20,
             height:20,
-            borderRadius:30,
+            borderRadius:30
           }}
            source={require('../assets/tz.jpg')} 
           >
@@ -1094,6 +1131,7 @@ const handleRegistration = async () => {
         </View>
       {/*  mwisho wa username*/}
        
+
 
 
 
@@ -1247,6 +1285,345 @@ const handleRegistration = async () => {
        
 
 
+</>
+)}
+
+
+
+
+
+ {OngezaPichaOpen && (
+            <>
+
+
+
+
+
+                 {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="user-md" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Aina Ya Kazi (mfano: mwalimu)"
+          //keyboardType="numeric"
+          
+          value={AinaYaKazi}
+          onChangeText={setAinaYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+
+             {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="industry" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Kituo Cha kazi (mfano: Mgore Microfinance)"
+          //keyboardType="numeric"
+          
+          value={KituoChaKazi}
+          onChangeText={setKituoChaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+         {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="indent" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Idara Ya Kazi (mfano: Elimu)"
+          //keyboardType="numeric"
+          
+          value={IdaraYaKazi}
+          onChangeText={setIdaraYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+        {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="compass" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Kata Ya Kazi (mfano: Mbeya Mjini)"
+          //keyboardType="numeric"
+          
+          value={KataYaKazi}
+          onChangeText={setKataYaKazi}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
+
+  {/*  mwanzo wa username*/}
+            <View 
+            style={[styles.dataContainerForPassword, 
+              {
+                 width:width-20,
+                marginTop:0,
+              }
+
+              ]}
+          >
+
+            <View style={{
+          width:'10%',
+          //justifyContent:"center",
+         // backgroundColor:'red',
+        }}>
+
+         {/* Add a button to toggle password visibility */}
+        <TouchableOpacity
+          
+          style={{ 
+            alignSelf: 'flex-start', 
+            marginRight: 0,color:'white',
+            flexDirection:'row',
+            alignItems:'center',
+             }}
+          >
+
+          <FontAwesome size={25} color="green" name="credit-card" />
+
+        {/*  <Text style={{
+           color: 'white', 
+           fontSize: 16,
+           fontWeight:'bold',
+           marginLeft:10,
+            }}>
+            +255
+          </Text>*/}
+        </TouchableOpacity>
+
+        </View>
+
+
+          <TextInput
+          style= {[styles.textinputi,{ 
+            color: 'white',width:'88%',
+            //backgroundColor:'white',
+
+            //paddingVertical:20,
+          }]}
+          placeholder="Check Number"
+          keyboardType="numeric"
+          
+          value={CheckNo}
+          onChangeText={setCheckNo}
+        placeholderTextColor="white"
+        />
+
+      
+        </View>
+      {/*  mwisho wa username*/}
+
+
+
+
 
 
 
@@ -1312,9 +1689,7 @@ const handleRegistration = async () => {
 
 
 
-
-
-
+  
   {/*  mwanzo wa picker*/}
  <View style={{ marginTop: 0 ,
   marginBottom:30,
@@ -1375,6 +1750,114 @@ const handleRegistration = async () => {
 
 
 
+</>
+)}
+
+
+
+
+
+
+
+
+<View style={{
+  justifyContent:'space-between',
+  alignItems:'center',
+  flexDirection:'row',
+  width:'100%',
+
+
+}}>
+
+{OngezaPichaOpen && (
+
+   <Pressable 
+    style={{
+      flexDirection:'row',
+      justifyContent:'space-around',
+      alignItems:'center',
+        backgroundColor:'blue',
+        marginTop:50,
+        paddingVertical:10,
+        //paddingHorizontal:40,
+        borderRadius:8,
+        color:'white',
+        borderColor:'wheat',
+        borderWidth:1,
+        width:'40%',
+     // backgroundColor:'white'
+
+    }}
+   
+     onPress={() => {
+  setOngezaPichaOpen(false);
+  setOngezaPichaClose(false);
+}}
+
+    >
+     <FontAwesome name='arrow-circle-left' 
+      size={28}
+      color='white' 
+      style={{
+       // marginTop:70,
+      }} 
+      
+       />
+      <Text style={styles.registerLbl}>Nyuma</Text>
+      
+      </Pressable>
+
+)}
+
+
+
+
+
+{!OngezaPichaOpen && (
+
+   <Pressable 
+    style={{
+      flexDirection:'row',
+      justifyContent:'space-around',
+      alignItems:'center',
+        backgroundColor:'blue',
+        marginTop:50,
+        paddingVertical:10,
+        //paddingHorizontal:40,
+        borderRadius:8,
+        color:'black',
+        borderColor:'wheat',
+        borderWidth:1,
+        width:'40%',
+     // backgroundColor:'white'
+    }}
+   
+     onPress={() => {
+  setOngezaPichaOpen(true);
+  setOngezaPichaClose(true);
+}}
+
+    >
+      <Text style={styles.registerLbl}>Endelea</Text>
+       <FontAwesome name='arrow-circle-right' 
+      size={28}
+      color='white' 
+      style={{
+       // marginTop:70,
+      }} 
+      
+       />
+      </Pressable>
+
+)}
+
+
+
+
+</View>
+
+
+
 
 
 
@@ -1396,7 +1879,7 @@ const handleRegistration = async () => {
                   borderWidth:1,
                // backgroundColor:'white'
               }}
-              onPress={handleRegistration}>
+              onPress={handleUpdatePost}>
                 <Text style={styles.registerLbl}>Sajili mteja</Text>
                  <FontAwesome name='user-circle' 
                 size={28}
@@ -1475,8 +1958,7 @@ const handleRegistration = async () => {
     </>
   );
 };
-
-export default AddMteja;
+export default RenewMtumishi;
 
 const styles = StyleSheet.create({
   mainCon: {

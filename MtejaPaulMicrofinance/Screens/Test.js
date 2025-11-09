@@ -41,7 +41,7 @@ export default function AboutMicrofinanceScreen() {
       <LinearGradient colors={['#0f172a', '#000000']} style={styles.gradient}>
         <ScrollView showsVerticalScrollIndicator={false}>
           <View style={styles.headerContainer}>
-            <Text style={styles.header}>Mgore Micro Credit Limited</Text>
+            <Text style={styles.header}>Mgore Microfinance</Text>
             <Text style={styles.subHeader}>
               Mfumo huu unakuwezesha kusimamia mikopo, marejesho, faini, na ripoti za kituo kwa urahisi na usalama.
             </Text>

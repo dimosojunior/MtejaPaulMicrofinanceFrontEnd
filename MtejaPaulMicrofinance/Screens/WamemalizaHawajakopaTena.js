@@ -277,6 +277,10 @@ const handlePressDetailsPage = (item) =>
  const handlePressRenewMteja = (item) =>
     navigation.navigate('Renew Mteja', { ...item, postId: item.id });
 
+
+const handlePressRenewMtumishi = (item) =>
+    navigation.navigate('Renew Mtumishi', { ...item, postId: item.id });
+
 //-----------Fetch wateja wote
 //const [WatejaWote2, setWatejaWote2] = useState(0);
 const [WamemalizaHawajakopaKabisa, setWamemalizaHawajakopaKabisa] = useState(0);
@@ -357,6 +361,13 @@ const TableRowComponent = ({ item}) => {
       </TouchableOpacity>
 
 {userData && userData.is_admin === true && (
+
+  <>
+{item && item.Aina && item.Aina.Aina === 'Kawaida' ? (
+
+
+
+
         <TouchableOpacity
         style={[
           globalStyles.cell,
@@ -376,10 +387,50 @@ const TableRowComponent = ({ item}) => {
             ]}
         />
       </TouchableOpacity>
+
+
+      ):(
+
+        <TouchableOpacity
+        style={[
+          globalStyles.cell,
+          globalStyles.buttoncolumn,
+          { justifyContent: 'center', alignItems: 'center' },
+        ]}
+        onPress={() => handlePressRenewMtumishi(item)}
+      >
+        <MaterialCommunityIcons
+          name="gesture-tap-button"
+          size={30}
+          style={[globalStyles.TableIconColor,
+            {
+              color:'wheat',
+            }
+
+            ]}
+        />
+      </TouchableOpacity>
+
+
+
       )}
+
+  
+  
+
+  </>
+
+  )}
 
 
     </View>
+
+
+
+
+
+
+
   )
 
     // hili bano la chini ni la if ya juu kama mtu akitype   

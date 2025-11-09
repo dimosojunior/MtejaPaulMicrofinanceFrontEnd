@@ -73,7 +73,12 @@ const MtejaDetails = ({navigation, route}) => {
     Created,
     reg_no,
     JumlaYaFainiZote,
-    Up_To
+    Up_To,
+    AinaYaKazi,
+    KituoChaKazi,
+    IdaraYaKazi,
+    KataYaKazi,
+    CheckNo
    
    } = route.params
 
@@ -466,11 +471,51 @@ onScroll={handleScroll} scrollEventThrottle={16}
       </Text>
       )}
 
+
+
+
      {SimuYaMteja && (
        <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
      Simu: 0{SimuYaMteja}    
       </Text>
       )}
+
+
+
+     {AinaYaKazi && (
+       <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
+     Kazi: {AinaYaKazi}    
+      </Text>
+      )}
+
+
+       {KituoChaKazi && (
+       <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
+     kituo Cha Kazi: {KituoChaKazi}    
+      </Text>
+      )}
+
+
+       {IdaraYaKazi && (
+       <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
+     Idara: {IdaraYaKazi}    
+      </Text>
+      )}
+
+
+       {KataYaKazi && (
+       <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
+     Kata Ya Kazi: {KataYaKazi}    
+      </Text>
+      )}
+
+
+       {CheckNo && (
+       <Text style={globalStyles.TaarifaBinafsiSimuYaMteja}>
+     CheckNo: {CheckNo}    
+      </Text>
+      )}
+
 
 
  {/*mwanzo wa view ya taarifa za mkopo*/}

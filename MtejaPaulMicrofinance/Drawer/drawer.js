@@ -34,6 +34,9 @@ import { EndPoint } from "../Constant/links";
 
 //import Test from '../Screens/Test';
 import AddMteja from '../Wateja/AddMteja';
+
+import SajiliMtumishiWaUmma from '../Wateja/SajiliMtumishiWaUmma';
+
 import MtejaDetails from '../Screens/MtejaDetails';
 // import DeleteMteja from '../Screens/DeleteMteja';
 
@@ -555,10 +558,10 @@ const [dropdownVisible2, setDropdownVisible2] = useState(false);
  {userData && userData.is_admin === true && (
 
             <Drawer.Screen
-          name="Sajili Mteja"
+          name="Wajasiria mali"
           options={{
-            drawerLabel: "Sajili Mteja",
-            title: "Sajili Mteja",
+            drawerLabel: "Wajasiria mali",
+            title: "Wajasiria mali",
             
             drawerIcon: () => (
               <FontAwesome name="user-circle" size={20} color="white" />
@@ -567,6 +570,25 @@ const [dropdownVisible2, setDropdownVisible2] = useState(false);
           component={AddMteja}
         />
         )}
+
+
+
+ {userData && userData.is_admin === true && (
+
+            <Drawer.Screen
+          name="Watumishi Wa uma"
+          options={{
+            drawerLabel: "Watumishi Wa uma",
+            title: "Watumishi Wa uma",
+            
+            drawerIcon: () => (
+              <FontAwesome name="user-md" size={20} color="white" />
+            )
+          }}
+          component={SajiliMtumishiWaUmma}
+        />
+        )}
+
 
 
  {userData && userData.is_admin === true && (
